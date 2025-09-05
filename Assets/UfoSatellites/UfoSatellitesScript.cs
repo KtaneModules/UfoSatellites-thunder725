@@ -643,9 +643,11 @@ public class UfoSatellitesScript : MonoBehaviour {
         }
 
 
-
-
         // If we land here, everything should be good
+        // Tell TP to focus on the module before pressing the buttons.
+        yield return null;
+
+
         // Documentation explicitely asks to use .OnInteract() and not call internal functions
         Satellites[results[0]].OnInteract();
         
@@ -661,6 +663,7 @@ public class UfoSatellitesScript : MonoBehaviour {
     // Auto-solve if Twitch Plays needs to force a solve
     IEnumerator TwitchHandleForcedSolve()
     {
+
 
         int[] pressesToSolve = new int[3];
         switch (validSatellitePattern)
@@ -685,6 +688,7 @@ public class UfoSatellitesScript : MonoBehaviour {
                 pressesToSolve = new int[3] { 0, 2, 4 };
                 break;
         }
+
 
 
         for (int i = 0; i < 3; i++)
